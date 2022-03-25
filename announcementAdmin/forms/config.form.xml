@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form xmlns="http://jelix.org/ns/forms/1.1">
+    <group ref="main">
+        <label locale="announcementAdmin~announcementAdmin.form.main.label"/>
+
+        <checkbox ref="permanent">
+            <label locale="announcementAdmin~announcementAdmin.form.input.permanentMsg.label"/>
+            <help locale="announcementAdmin~announcementAdmin.forms.input.permanent.help"/>
+        </checkbox>
+
+        <radiobuttons ref="display_type">
+            <label locale="announcementAdmin~announcementAdmin.form.input.display_type.label"/>
+            <item value="modal" locale="announcementAdmin~announcementAdmin.form.input.display_type.value_modal" />
+            <item value="alert" locale="announcementAdmin~announcementAdmin.form.input.display_type.value_alert" />
+        </radiobuttons>
+
+        <menulist ref="repository" required="true">
+            <label locale="announcementAdmin~announcementAdmin.form.input.repository"/>
+            <datasource class="announcementAdmin~listRepositoriesDatasource" />
+        </menulist>
+
+        <menulist ref="project">
+            <label locale="announcementAdmin~announcementAdmin.form.input.project"/>
+            <datasource class="announcementAdmin~listProjectDatasource" 
+                criteriafrom="repository"
+                labelproperty="cvalue" valueproperty="ckey" />
+        </menulist>
+
+        <textarea ref="content" defaultvalue="">
+            <label locale="announcementAdmin~announcementAdmin.form.input.message" />
+        </textarea>
+    </group>
+
+    <submit ref="_submit">
+        <label locale="admin~admin.form.admin_services.submit.label"/>
+    </submit>
+</form>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dao xmlns="http://jelix.org/ns/dao/1.0">
+    <datasources>
+        <primarytable name="announcement_details" realname="announcement_details" primarykey="id" />
+    </datasources>
+    <record>
+        <property name="id" fieldname="id" datatype="integer" autoincrement="true" default=""/>
+        <property name="timestamp" fieldname="announcement_timestamp" datatype="datetime" insertpattern="now()"/>      
+        <property name="repository" fieldname="repository" datatype="string"/>
+        <property name="project" fieldname="project" datatype="string"/>
+        <property name="content" fieldname="content" datatype="text"/>
+        <property name="permanent" fieldname="permanent" datatype="boolean"/>
+        <property name="display_type" fieldname="display_type" datatype="text"/>
+    </record>
+</dao>

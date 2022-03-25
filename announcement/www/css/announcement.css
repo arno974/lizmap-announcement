@@ -1,0 +1,7 @@
+#lizmap-announcement-alert{ 
+    position: absolute;
+    top: 12px;
+    right: 50px;
+    width: 30%;
+    z-index:1000;
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="http://jelix.org/ns/module/1.0">
+    <info id="announcementAdmin3liz.com" name="announcementAdmin" createdate="2021-07-09">
+        <version date="2021-07-09">0.1pre</version>
+        <label lang="en_US">announcementAdmin</label>
+        <description lang="en_US" />
+        <license URL="">All rights reserved</license>
+        <copyright>2011-2020 3liz</copyright>
+        <creator name="Arnaud Vandecasteele" email="your-email@yourwebsite.undefined" />
+        <!--<contributor name="hisname" email="hisemail@yoursite.undefined"  since="" role=""/>-->
+        <homepageURL>http://geolab.re</homepageURL>
+    </info>
+    <dependencies>
+        <jelix minversion="1.6.34-pre" maxversion="1.8.*"/>
+    </dependencies>
+</module>

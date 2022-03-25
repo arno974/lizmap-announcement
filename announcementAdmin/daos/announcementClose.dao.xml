@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dao xmlns="http://jelix.org/ns/dao/1.0">
+    <datasources>
+        <primarytable name="announcement_user_close" realname="announcement_user_close" primarykey="id" />
+    </datasources>
+    <record>
+        <property name="id" fieldname="id" datatype="integer" autoincrement="true" default=""/>
+        <property name="user" datatype="string"/>      
+        <property name="repository" fieldname="repository" datatype="string"/>
+        <property name="project" fieldname="project" datatype="string"/>
+        <property name="date_close_msg" fieldname="date_close_msg" datatype="datetime" insertpattern="now()"/>
+    </record>
+</dao>
