@@ -76,7 +76,7 @@ class ajaxCtrl extends jController {
         foreach ($lastInfoRepoRec as $row) {            
             $repoAnnouncement['id'] = $row->id;
             $repoAnnouncement['repository'] = $row->repository;
-            $repoAnnouncement['content'] = $row->content .' date Repo: ' . $lastCloseRepo; 
+            $repoAnnouncement['content'] = $row->content; 
             $repoAnnouncement['timestamp'] = $row->timestamp;
             $repoAnnouncement['display_type'] = $row->display_type;
             $repoAnnouncement['permanent'] = $row->permanent;
