@@ -16,12 +16,12 @@
 
         <menulist ref="repository" required="true">
             <label locale="announcementAdmin~announcementAdmin.form.input.repository"/>
-            <datasource class="announcementAdmin~listRepositoriesDatasource" />
+            <datasource class="admin~listRepositoriesDatasource" />
         </menulist>
 
         <menulist ref="project">
             <label locale="announcementAdmin~announcementAdmin.form.input.project"/>
-            <datasource class="announcementAdmin~listProjectDatasource" 
+            <datasource class="admin~listProjectDatasource"
                 criteriafrom="repository"
                 labelproperty="cvalue" valueproperty="ckey" />
         </menulist>
