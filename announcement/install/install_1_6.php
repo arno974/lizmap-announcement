@@ -9,7 +9,7 @@
 */
 
 
-class informationsUserModuleInstaller extends jInstallerModule {
+class announcementModuleInstaller extends jInstallerModule {
 
     function install() {
         //if ($this->firstDbExec())
