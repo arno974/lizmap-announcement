@@ -16,7 +16,7 @@
 
         <menulist ref="repository" required="true">
             <label locale="announcementAdmin~announcementAdmin.form.input.repository"/>
-            <datasource class="admin~listRepositoriesDatasource" />
+            <datasource class="admin~listRepositoryDatasource" /> 
         </menulist>
 
         <menulist ref="project">
