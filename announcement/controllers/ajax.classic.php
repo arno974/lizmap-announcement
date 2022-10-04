@@ -12,7 +12,7 @@ class ajaxCtrl extends jController {
         $profile = 'announcement';        
 
         $lastCloseRepo = NULL;
-        $lastCloseRepoProj = NULL;
+        
 
         if (!empty($user)) {   
             $dao = jDao::get('announcementAdmin~announcementClose', $profile);
@@ -50,6 +50,7 @@ class ajaxCtrl extends jController {
 
     private function getProjectLastAnnouncmentCloseTimeStamp($dao, $user, $repository, $project){
         // Get last close timestamp for repo and proj 
+        $lastCloseRepoProj = NULL;
         $conditions = jDao::createConditions();
         $conditions->addCondition('user','=', $user);   
         $conditions->addCondition('repository','=', $repository); 
