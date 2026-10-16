@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module xmlns="http://jelix.org/ns/module/1.0">
-    <info id="announcementAdmin3liz.com" name="announcementAdmin" createdate="2021-07-09">
-        <version date="2021-07-09">0.1pre</version>
+    <info id="announcementAdmin@geolab.re" name="announcementAdmin" createdate="2021-07-09">
+        <version date="2026-10-16">0.2.0</version>
         <label lang="en_US">announcementAdmin</label>
-        <description lang="en_US" />
-        <license URL="">All rights reserved</license>
-        <copyright>2011-2020 3liz</copyright>
-        <creator name="Arnaud Vandecasteele" email="your-email@yourwebsite.undefined" />
-        <!--<contributor name="hisname" email="hisemail@yoursite.undefined"  since="" role=""/>-->
-        <homepageURL>http://geolab.re</homepageURL>
+        <description lang="en_US">Lizmap administration of the messages displayed to the users</description>
+        <license URL="https://spdx.org/licenses/GPL-3.0-or-later.html">GNU GPLv3</license>
+        <copyright>2021-2026 GEOLAB</copyright>
+        <creator name="Arnaud Vandecasteele" email="arnaud [dot] vdc [at] geolab [dot] re" />
+        <contributor name="Laurent Jouanneau" email="ljouanneau@3liz.com"/>
+        <homepageURL>https://github.com/arno974/lizmap-announcement</homepageURL>
     </info>
     <dependencies>
-        <jelix minversion="1.6.34-pre" maxversion="1.8.*"/>
+        <module name="lizmap" minversion="3.8.0" maxversion="3.11.*"/>
     </dependencies>
 </module>
