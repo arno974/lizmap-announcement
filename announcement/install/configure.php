@@ -14,4 +14,10 @@ class announcementModuleConfigurator extends \Jelix\Installer\Module\Configurato
     {
         return array();
     }
+
+    public function getFilesToCopy()
+    {
+        return array('www/announcement' => 'www:announcement');
+    }
 }
+
