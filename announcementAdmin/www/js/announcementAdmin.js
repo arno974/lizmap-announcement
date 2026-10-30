@@ -2,13 +2,6 @@ $( document ).ready(function() {
         // Values given by the controller with addJsVariables()
         const settings = JSON.parse(document.getElementById('lizmap-vars').textContent).announcementAdmin;
 
-        //clear all fields
-        $(':input','#jforms_announcementAdmin_config')
-        .not(':button, :submit, :reset, :hidden')
-        .val('')
-        .removeAttr('checked')
-        .removeAttr('selected');
-
         //DataTables configuration
         var dtTable = $('#listMsg').DataTable({
             "ajax": settings.urlGetMessages,
