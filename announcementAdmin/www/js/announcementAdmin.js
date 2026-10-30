@@ -1,4 +1,7 @@
 $( document ).ready(function() {
+        // Values given by the controller with addJsVariables()
+        const settings = JSON.parse(document.getElementById('lizmap-vars').textContent).announcementAdmin;
+
         //clear all fields
         $(':input','#jforms_announcementAdmin_config')
         .not(':button, :submit, :reset, :hidden')
@@ -6,27 +9,16 @@ $( document ).ready(function() {
         .removeAttr('checked')
         .removeAttr('selected');
 
-        //add editor to form
-        ClassicEditor.create( document.querySelector( '#jforms_announcementAdmin_config_content' ),{
-                toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList'],
-                heading: {
-                    options: [
-                        { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
-                        { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
-                        { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' }
-                    ]
-                }
-        }).catch( error => {console.error( error );} );
-        
         //DataTables configuration
         var dtTable = $('#listMsg').DataTable({
-            "ajax": _URLGETMSG,   
+            "ajax": settings.urlGetMessages,
+            language: DatatablesTranslations,
             dom: 'Bfrtip', 
             autoWidth: false,   
             buttons: [{
-                text: _LABELTRUNCATEMSG,
+                text: settings.labelTruncate,
                 action: function ( e, dt, node, config ) {
-                    $.get( _URLTRUNCATEMSG, function( data ) {
+                    $.get( settings.urlTruncate, function( data ) {
                         dt.ajax.reload();
                     });
                 }
@@ -41,7 +33,7 @@ $( document ).ready(function() {
                 {
                     data: null,
                     render:function (data, type, row) {
-                        return `<button data-id="${data}" class="deleteMsg btn btn-danger" id="delete">${_LABELREMOVEMSG}</button>`
+                        return `<button data-id="${data}" class="deleteMsg btn btn-danger" id="delete">${settings.labelRemove}</button>`
                 }}               
             ],            
             "columnDefs": [{
@@ -64,6 +56,6 @@ $( document ).ready(function() {
         $('#listMsg tbody').on( 'click', 'button', function () {
             data = dtTable.row( $(this).parents('tr') ).data(); 
             dtTable.row( $(this).parents('tr') ).remove().draw( false );
-            $.get( _URLDELETEMSG, {id:data.id}, function( data ) {  });
+            $.get( settings.urlDelete, {id:data.id}, function( data ) {  });
         }); 
 });

@@ -26,9 +26,9 @@
                 labelproperty="cvalue" valueproperty="ckey" />
         </menulist>
 
-        <textarea ref="content" defaultvalue="">
+        <htmleditor ref="content" config="ckdefault">
             <label locale="announcementAdmin~announcementAdmin.form.input.message" />
-        </textarea>
+        </htmleditor>
     </group>
 
     <submit ref="_submit">

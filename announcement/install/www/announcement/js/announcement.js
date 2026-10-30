@@ -12,7 +12,7 @@ lizMap.events.on({
         };
                
         $.get(
-            _URLGETLASTINFO, repoProjectParams, function(data) {    
+            announcementConfig.urlGetLastInfo, repoProjectParams, function(data) {    
                 let repoContent = null;
                 let projContent = null;
                 let repoDisplayType = null;
@@ -28,7 +28,7 @@ lizMap.events.on({
                     let boostrapModal =  `<div id="lizmap-announcement-modal" class="modal hide fade">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                    <h3>${_MODALHEADER}</h3></div><div class="modal-body">
+                                                    <h3>${announcementConfig.modalHeader}</h3></div><div class="modal-body">
                                                     <p id="lizmap-announcement-repo"></p>
                                                     <p id="lizmap-announcement-project" class="mb-0"></p>
                                                 </div>
@@ -88,21 +88,21 @@ lizMap.events.on({
                 //Event on close
                 $('#lizmap-announcement-alert').bind('closed', function () {
                     if(projDisplayType === 'alert'){
-                        $.get(_SETUSERCLOSEINFO, repoProjectParams, function(data) { })
+                        $.get(announcementConfig.urlSetCloseInfo, repoProjectParams, function(data) { })
                      }else{
                         let _repoProjectParams = repoProjectParams;
                         _repoProjectParams.project = null;                         
-                        $.get(_SETUSERCLOSEINFO, _repoProjectParams, function(data) { });  
+                        $.get(announcementConfig.urlSetCloseInfo, _repoProjectParams, function(data) { });  
                      }
                 });
 
                 $(document).on('hide.bs.modal','#lizmap-announcement-modal', function () {
                     if(projDisplayType === 'modal'){
-                        $.get(_SETUSERCLOSEINFO, repoProjectParams, function(data) { })
+                        $.get(announcementConfig.urlSetCloseInfo, repoProjectParams, function(data) { })
                      }else{                        
                         let _repoProjectParams = repoProjectParams;
                         _repoProjectParams.project = null;                   
-                        $.get(_SETUSERCLOSEINFO, _repoProjectParams, function(data) { });  
+                        $.get(announcementConfig.urlSetCloseInfo, _repoProjectParams, function(data) { });  
                      }                      
                 });                                  
             },'json'

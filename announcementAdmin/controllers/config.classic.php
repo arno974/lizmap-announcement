@@ -74,27 +74,31 @@ class configCtrl extends jController {
         
         // Display form
         $tpl = new jTpl();
-        $confUrlEngine = &jApp::config()->urlengine;
 
-        $bp = $confUrlEngine['basePath'];
+        // DataTables, Bootstrap and jQuery as packaged by Lizmap
+        $rep->addAssets('datatables');
 
         $rep->addCSSLinkModule('announcementAdmin', 'css/announcementAdmin.css');
         $rep->addCSSLinkModule('announcementAdmin', 'css/assets/buttons.bootstrap.min.css');
-        $rep->addCSSLink($bp.'assets/css/jquery.dataTables.css');
-        $rep->addJSCode('var _URLGETMSG = "' . jUrl::get('announcementAdmin~ajax:getAllAnnouncement') . '";');    
-        $rep->addJSCode('var _URLTRUNCATEMSG = "' . jUrl::get('announcementAdmin~ajax:truncateAnnouncementTable') . '";');  
-        $rep->addJSCode('var _URLDELETEMSG = "' . jUrl::get('announcementAdmin~ajax:deleteAnnouncement') . '";');  
-        $rep->addJSCode('var _LABELTRUNCATEMSG = "' . jLocale::get("announcementAdmin~announcementAdmin.list.buttons.truncate").'";');  
-        $rep->addJSCode('var _LABELREMOVEMSG = "' . jLocale::get("announcementAdmin~announcementAdmin.list.label.removerow").'";');  
-        $rep->addJSLink($bp.'assets/js/jquery.dataTables.min.js');
-        $rep->addJSLink($bp.'assets/js/jquery.dataTables.bootstrap.js');
-        
-        $rep->addJSLink($bp.'assets/js/ckeditor5/ckeditor.js');        
-        $rep->addJSLinkModule('announcementAdmin', 'js/assets/dataTables.buttons.min.js');
-        $rep->addJSLinkModule('announcementAdmin', 'js/assets/buttons.bootstrap.min.js');
-        $rep->addJSLinkModule('announcementAdmin', 'js/assets/moment.min.js');        
-        $rep->addJSLinkModule('announcementAdmin', 'js/assets/datetime.js');
-        $rep->addJSLinkModule('announcementAdmin', 'js/announcementAdmin.js');
+
+        // Read by announcementAdmin.js from the #lizmap-vars JSON script
+        $rep->addJsVariables(array(
+            'announcementAdmin' => array(
+                'urlGetMessages' => jUrl::get('announcementAdmin~ajax:getAllAnnouncement'),
+                'urlTruncate' => jUrl::get('announcementAdmin~ajax:truncateAnnouncementTable'),
+                'urlDelete' => jUrl::get('announcementAdmin~ajax:deleteAnnouncement'),
+                'labelTruncate' => jLocale::get('announcementAdmin~announcementAdmin.list.buttons.truncate'),
+                'labelRemove' => jLocale::get('announcementAdmin~announcementAdmin.list.label.removerow'),
+            ),
+        ));
+
+        // defer: executed after jQuery and DataTables, which are deferred too
+        $defer = array('defer' => '');
+        $rep->addJSLinkModule('announcementAdmin', 'js/assets/dataTables.buttons.min.js', $defer);
+        $rep->addJSLinkModule('announcementAdmin', 'js/assets/buttons.bootstrap.min.js', $defer);
+        $rep->addJSLinkModule('announcementAdmin', 'js/assets/moment.min.js', $defer);
+        $rep->addJSLinkModule('announcementAdmin', 'js/assets/datetime.js', $defer);
+        $rep->addJSLinkModule('announcementAdmin', 'js/announcementAdmin.js', $defer);
         $tpl->assign('form', $form);
         $rep->body->assign('MAIN', $tpl->fetch('announcementAdmin~config_edit'));
         return $rep;       

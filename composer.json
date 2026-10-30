@@ -1,0 +1,23 @@
+{
+    "name": "arno974/lizmap-announcement",
+    "type": "jelix-module",
+    "description": "Jelix modules for Lizmap, to display messages from the administrator to the users of the maps",
+    "keywords": ["module", "jelix", "lizmap", "announcement", "message"],
+    "homepage": "https://github.com/arno974/lizmap-announcement",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Arnaud Vandecasteele",
+            "email": "arnaud.sig@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "extra": {
+        "jelix": {
+            "modules": [
+                "announcement/",
+                "announcementAdmin/"
+            ]
+        }
+    }
+}
