@@ -3,6 +3,12 @@ $( document ).ready(function() {
     // Values given by the controller with addJsVariables()
     const settings = JSON.parse(document.getElementById('lizmap-vars').textContent).announcementAdmin;
 
+    // The project list is only filled when the repository changes:
+    // fill it for the repository already selected when the page is loaded
+    jFormsJQ.onFormReady('jforms_announcementAdmin_config', function (form) {
+        form.updateLinkedElements('repository');
+    });
+
     const token = $('#jforms_announcementAdmin_config input[name="__JFORMS_TOKEN__"]').val();
 
     //DataTables configuration

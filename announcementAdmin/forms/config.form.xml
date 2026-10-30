@@ -26,7 +26,7 @@
                 labelproperty="cvalue" valueproperty="ckey" />
         </menulist>
 
-        <htmleditor ref="content" config="ckdefault">
+        <htmleditor ref="content" config="default">
             <label locale="announcementAdmin~announcementAdmin.form.input.message" />
         </htmleditor>
     </group>
