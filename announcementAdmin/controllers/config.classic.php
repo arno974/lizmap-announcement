@@ -89,6 +89,7 @@ class configCtrl extends jController {
                 'urlDelete' => jUrl::get('announcementAdmin~ajax:deleteAnnouncement'),
                 'labelTruncate' => jLocale::get('announcementAdmin~announcementAdmin.list.buttons.truncate'),
                 'labelRemove' => jLocale::get('announcementAdmin~announcementAdmin.list.label.removerow'),
+                'labelConfirmTruncate' => jLocale::get('announcementAdmin~announcementAdmin.list.confirm.truncate'),
             ),
         ));
 
