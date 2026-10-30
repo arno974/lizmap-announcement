@@ -8,7 +8,7 @@
             <help locale="announcementAdmin~announcementAdmin.forms.input.permanent.help"/>
         </checkbox>
 
-        <radiobuttons ref="display_type">
+        <radiobuttons ref="display_type" required="true" selectedvalue="alert">
             <label locale="announcementAdmin~announcementAdmin.form.input.display_type.label"/>
             <item value="modal" locale="announcementAdmin~announcementAdmin.form.input.display_type.value_modal" />
             <item value="alert" locale="announcementAdmin~announcementAdmin.form.input.display_type.value_alert" />

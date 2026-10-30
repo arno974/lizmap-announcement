@@ -69,9 +69,7 @@ class ajaxCtrl extends jController {
         $conditions = jDao::createConditions();
         $conditions->addCondition('repository','=', $repository);    
         $conditions->addCondition('project','=', '');      
-        if (!is_null($lastCloseRepo)) { 
-            $conditions->addCondition('timestamp', '>', $lastCloseRepo);
-        }  
+        $this->addNotClosedCondition($conditions, $lastCloseRepo);
         $conditions->addItemOrder('timestamp','desc');
         $lastInfoRepoRec = $dao->findBy($conditions, 0, 1);               
         foreach ($lastInfoRepoRec as $row) {            
@@ -91,12 +89,10 @@ class ajaxCtrl extends jController {
         $conditions = jDao::createConditions();
         $conditions->addCondition('repository','=', $repository);        
         $conditions->addCondition('project','=', $project);
-        if (!is_null($lastCloseRepoProj)) { 
-            $conditions->addCondition('timestamp', '>', $lastCloseRepoProj);
-        } 
+        $this->addNotClosedCondition($conditions, $lastCloseRepoProj);
         $conditions->addItemOrder('timestamp','desc');
-        $lastInfoProjectRec = $dao->findBy($conditions, 0, 1);              
-        foreach ($lastInfoProjectRec as $row) {            
+        $lastInfoProjectRec = $dao->findBy($conditions, 0, 1);
+        foreach ($lastInfoProjectRec as $row) {
             $projectAnnouncement['id'] = $row->id;
             $projectAnnouncement['repository'] = $row->repository;
             $projectAnnouncement['project'] = $row->project;
@@ -106,6 +102,20 @@ class ajaxCtrl extends jController {
             $projectAnnouncement['permanent'] = $row->permanent;
         }
         return $projectAnnouncement;
+    }
+
+    /**
+     * Keep the messages published after the last close of the user,
+     * and the permanent ones, displayed at each page load even when closed
+     */
+    private function addNotClosedCondition($conditions, $lastClose){
+        if (is_null($lastClose)) {
+            return;
+        }
+        $conditions->startGroup('OR');
+        $conditions->addCondition('timestamp', '>', $lastClose);
+        $conditions->addCondition('permanent', '=', 1);
+        $conditions->endGroup();
     }
    
 

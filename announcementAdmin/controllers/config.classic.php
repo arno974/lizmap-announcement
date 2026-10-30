@@ -145,9 +145,7 @@ class configCtrl extends jController {
     foreach ( $form->getControls() as $ctrl ) {
         if ( $ctrl->type != 'submit' ){
           
-          $val = $form->getData( $ctrl->ref );
-          jLog::log('form ref : ' . $ctrl->ref . ' / value : '. $val );
-          $fData[$ctrl->ref] = $val;   
+          $fData[$ctrl->ref] = $form->getData( $ctrl->ref );
         }
     }
 
@@ -157,18 +155,20 @@ class configCtrl extends jController {
     $record->repository = $fData['repository'];
     $record->project = $fData['project'];
     $record->content = $fData['content'];
-    $record->display_type = $fData['display_type'];    
-    jLog::log('form value : ' . $fData['display_type']);    
+    $record->display_type = $fData['display_type'];
     $record->permanent = $fData['permanent'];
-    $dao->insert($record); 
+    $dao->insert($record);
 
     //MORE CONCISE WAY TO DO THIS BUT DON'T KNOW HOW TO SPECIFY THE CONNECTION ?
     //$form->saveToDao('announcementAdmin~announcementDetails');
-    
-    // Redirect to the validation page
+
+    // The saved data must not be displayed again in the form
+    jForms::destroy('announcementAdmin~config');
+
+    // modify creates an empty form and redirects to edit
     jMessage::add( jLocale::get("announcementAdmin~announcementAdmin.form.inserted") );
     $rep= $this->getResponse("redirect");
-    $rep->action="announcementAdmin~config:edit";
+    $rep->action="announcementAdmin~config:modify";
     return $rep;    
   }
 }
