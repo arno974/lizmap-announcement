@@ -5,7 +5,7 @@
 
         <checkbox ref="permanent">
             <label locale="announcementAdmin~announcementAdmin.form.input.permanentMsg.label"/>
-            <help locale="announcementAdmin~announcementAdmin.forms.input.permanent.help"/>
+            <help locale="announcementAdmin~announcementAdmin.form.input.permanent.help"/>
         </checkbox>
 
         <radiobuttons ref="display_type" required="true" selectedvalue="alert">
